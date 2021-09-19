@@ -1,0 +1,25 @@
+<div class="flex flex-col h-full text-gray-700">
+  <div class="board-container mt-20 p-20">
+    <div class="search-header flex items-center">
+      <h1 class="text-2xl text-left">Lorem Board <small>books of</small></h1>
+      <input #input class="border-0 border-b-2 focus:outline-none px-4 py-1 text-gray-900" placeholder="search" />
+      <button
+        (click)="searchBook(input.value)"
+        class="active:bg-gray-700 bg-black focus:outline-none hover:bg-gray-600 px-4 py-2 text-sm text-white transition"
+      >
+        submit
+      </button>
+      <openlibrary-loader *ngIf="loader$ | async" [isPageLoader]="false"></openlibrary-loader>
+    </div>
+    <ng-container *ngIf="true; else noItemFoundTemplate">
+      <div class="flex flex-grow h-full mt-4 space-x-6 overflow-auto">
+        <openlibrary-kanban-group></openlibrary-kanban-group>
+        <openlibrary-kanban-group></openlibrary-kanban-group>
+      </div>
+    </ng-container>
+    <ng-template #noItemFoundTemplate>
+      <openlibrary-error></openlibrary-error>
+    </ng-template>
+  </div>
+</div>
+{{ docs | async | json }}

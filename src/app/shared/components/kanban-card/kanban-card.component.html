@@ -1,0 +1,27 @@
+<div class="card-container p-3 my-2">
+  <div class="card-header">
+    <button class="block w-full" (click)="isCollapsed = !isCollapsed">
+      <div class="flex justify-between">
+        <h3 class="line-clamp-1 text-left">A middle English Vocabulary</h3>
+        <openlibrary-icon [@rotate]="isCollapsed" icon="chevron-right"></openlibrary-icon>
+      </div>
+    </button>
+  </div>
+
+  <div [@collapse]="!isCollapsed" [ngClass]="contenClasses">
+    <div class="flex justify-between px-1.5 py-3">
+      <span class="align-middle bg-green-400 font-medium px-2 py-1 rounded text-sm text-white">6 Editions</span>
+      <span class="my-auto text-gray-400 text-sm">First Puplished: 2342</span>
+    </div>
+    <div class="flex justify-between px-1.5 py-3">
+      <div class="flex mr-1">
+        <openlibrary-icon icon="book"></openlibrary-icon>
+        <span class="my-auto text-gray-400 text-xs">2323 pages</span>
+      </div>
+      <div class="flex ml-1">
+        <openlibrary-icon icon="book-open"></openlibrary-icon>
+        <span class="my-auto text-gray-400 text-xs ml-2">2342 hours read time</span>
+      </div>
+    </div>
+  </div>
+</div>

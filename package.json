@@ -4,7 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:node": "ng build",
+    "build:dev": "yarn build:node",
+    "build:staging": "yarn build:node --c=staging",
+    "build:production": "yarn build:node --c=production",
+    "test:dev": "ng test --watch --progress",
+    "test:staging": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "test:production": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -22,6 +28,7 @@
     "@ngneat/tailwind": "7.0.3",
     "@ngxs/router-plugin": "^3.7.2",
     "@ngxs/store": "^3.7.2",
+    "ngx-toastr": "^14.1.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

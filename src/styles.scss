@@ -1,9 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '~ngx-toastr/toastr';
 
 html,
 body {
   background-color: #fcfcfc;
   height: 100vh;
+}
+
+button:disabled,
+button[disabled],
+button[disabled='disabled'] {
+  cursor: progress;
+  pointer-events: none;
+  background-color: gray;
+  color: black;
+}
+
+#toast-container {
+  z-index: 9999999;
 }

@@ -1,5 +1,6 @@
-import { trigger, state, style, AUTO_STYLE, transition, animate } from '@angular/animations';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Doc } from '../../models/book.model';
 
 @Component({
   selector: 'openlibrary-kanban-card',
@@ -31,6 +32,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KanbanCardComponent {
+  @Input()
+  book: Doc;
+
   isCollapsed = false;
 
   constructor() {}

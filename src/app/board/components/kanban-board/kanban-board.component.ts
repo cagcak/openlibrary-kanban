@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { LoaderState } from '@shared';
+import { FilteredByYear, LoaderState } from '@shared';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { BoardBooksByAuthor } from '../../store/board.actions';
-import { Board } from '../../store/board.model';
 import { BoardState } from '../../store/board.state';
 
 @Component({
@@ -12,30 +10,18 @@ import { BoardState } from '../../store/board.state';
   templateUrl: './kanban-board.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KanbanBoardComponent implements OnInit {
+export class KanbanBoardComponent {
   @Select(LoaderState.getAny([BoardBooksByAuthor.desc]))
   loader$: Observable<boolean>;
 
-  @Select(BoardState.book)
-  book$: Observable<Board.Book>;
+  @Select(BoardState.yearOfDocs)
+  yearOfDocs$: Observable<FilteredByYear[]>;
 
-  get docs() {
-    return this.book$.pipe(map((book) => book?.docs));
-  }
+  trackByFn = (index: number, item: any) => index || item;
 
-  constructor(private store: Store) {
-    console.log();
-  }
-
-  ngOnInit() {
-    console.log();
-  }
+  constructor(private store: Store) {}
 
   searchBook(author: string) {
-    console.log(author);
-
-    // return;
-
     this.store.dispatch(new BoardBooksByAuthor({ author }));
   }
 }

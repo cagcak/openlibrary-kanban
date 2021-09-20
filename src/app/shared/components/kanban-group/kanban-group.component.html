@@ -1,12 +1,11 @@
-<div class="border-opacity-20 flex flex-col flex-shrink-0 shadow-md">
-  <div class="border-blue-200 border-t-8 flex flex-shrink-0 h-10 items-center px-2">
-    <span class="block text-lg font-semibold">2012</span>
+<div class="kanban-group-container border-opacity-20 flex flex-col flex-shrink-0 shadow-md">
+  <div [ngClass]="boardGroupClasses">
+    <span class="block text-lg font-semibold">{{ doc.year }}</span>
     <button class="flex hover:bg-indigo-500 ml-auto transition-all">
       <openlibrary-icon icon="menu"></openlibrary-icon>
     </button>
   </div>
   <div class="flex flex-col pb-2 overflow-auto">
-    <openlibrary-kanban-card></openlibrary-kanban-card>
-    <openlibrary-kanban-card></openlibrary-kanban-card>
+    <openlibrary-kanban-card *ngFor="let book of doc.books; trackBy: trackByFn" [book]="book"></openlibrary-kanban-card>
   </div>
 </div>

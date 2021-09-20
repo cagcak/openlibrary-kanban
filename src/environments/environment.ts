@@ -5,7 +5,9 @@
 import { Environment } from '../app/shared';
 
 export const environment: Environment = {
+  environment: 'development',
   production: false,
+  imagePath: 'assets/images/',
   url: {
     host: 'http://openlibrary.org/search.json',
   },
